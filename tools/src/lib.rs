@@ -27,9 +27,7 @@ macro_rules! run {
                 Some(code) => Err(BadExit::Code(code)),
                 None => Err(BadExit::Signal),
             }
-            Err(_) => {
-                Err(BadExit::FailedToRun)
-            }
+            Err(_) => Err(BadExit::FailedToRun)
         }
     }};
     ($cmd:expr, $($args:expr,)*) => {
