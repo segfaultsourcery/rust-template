@@ -37,6 +37,9 @@ macro_rules! run {
             }
         }
     }};
+    ($cmd:expr, $($args:expr,)*) => {
+        run!($cmd, $($args),*)
+    };
 }
 
 pub enum BadExit {
