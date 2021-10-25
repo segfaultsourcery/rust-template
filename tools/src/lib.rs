@@ -22,15 +22,10 @@ macro_rules! run {
             .output();
 
         match output {
-            Ok(output) => {
-                if output.status.success() {
-                    Ok(())
-                } else {
-                    match output.status.code() {
-                        Some(code) => Err(BadExit::Code(code)),
-                        None => Err(BadExit::Signal),
-                    }
-                }
+            Ok(output) if output.status.success() => Ok(()),
+            Ok(output) => match output.status.code() {
+                Some(code) => Err(BadExit::Code(code)),
+                None => Err(BadExit::Signal),
             }
             Err(_) => {
                 Err(BadExit::FailedToRun)
