@@ -1,0 +1,20 @@
+[package]
+name = "tools"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+doctest = false
+
+[[bin]]
+name = "make"
+path = "src/make.rs"
+doctest = false
+
+[[bin]]
+name = "checks"
+path = "src/checks.rs"
+doctest = false
+
+[dependencies]
