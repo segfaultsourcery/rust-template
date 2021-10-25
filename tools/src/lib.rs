@@ -1,4 +1,7 @@
-use std::{error::Error, fmt::Display};
+use std::{
+    error::Error,
+    fmt::{Debug, Display},
+};
 
 #[cfg(test)]
 mod tests;
@@ -61,7 +64,7 @@ impl Display for BadExit {
     }
 }
 
-impl std::fmt::Debug for BadExit {
+impl Debug for BadExit {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         <Self as Display>::fmt(self, f)
     }
